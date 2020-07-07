@@ -25,6 +25,7 @@
             <td>| FirstName </td>
             <td>| MiddleName</td>
             <td>| LastName</td>
+            <td>| Role</td>
             <td>|</td>
         </tr>
         <c:forEach items="${users}" var="user">
@@ -33,6 +34,7 @@
                 <td>| ${user.firstName}</td>
                 <td>| ${user.middleName}</td>
                 <td>| ${user.lastName}</td>
+                <td>| ${user.roles}</td>
                 <%--<c:forEach items="${user.accounts}" var="account">
                     <td>| ${account.account_id}</td>
                     <td>| ${account.account}</td>

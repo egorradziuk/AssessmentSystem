@@ -1,6 +1,9 @@
 package by.radziuk.devincubator.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -21,12 +24,10 @@ public class User {
     private String password;
     @Column(name = "email")
     private String email;
-   /* @Column(name = "role_id")
-    private int role_id;*/
 
 
-    /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    private List<Account> accounts = new ArrayList<Account>();*/
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Role> roles;
 
     /*@Transient
     public String fullName() {
@@ -89,6 +90,14 @@ public class User {
         this.email = email;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     /* public int getRole_id() {
         return role_id;
     }
@@ -100,10 +109,11 @@ public class User {
     @Override
     public String toString() {
         return "User [" +
-                "id=" + id +
-                ", first_name='" + firstName + '\'' +
-                ", middle_name='" + middleName + '\'' +
-                ", last_name='" + lastName + '\'' +
-                ']';
+                "id='" + id +
+                "\', first_name='" + firstName + "\'" +
+                "\', middle_name='" + middleName + '\'' +
+                "\', last_name='" + lastName + '\'' +
+                "\', roles ='" + roles.toString() +
+                "\']";
     }
 }
