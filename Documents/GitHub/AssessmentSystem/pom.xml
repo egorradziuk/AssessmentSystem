@@ -13,27 +13,6 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
-  <!--    <properties>-->
-  <!--        <spring.version>4.2.5.RELEASE</spring.version>-->
-  <!--        <hibernate.version>4.3.6.Final</hibernate.version>-->
-  <!--        <mysql.connector.version>5.1.9</mysql.connector.version>-->
-  <!--    </properties>-->
-
-  <!--    <dependencies>-->
-  <!--    <dependency>-->
-  <!--        <groupId>org.projectlombok</groupId>-->
-  <!--        <artifactId>lombok</artifactId>-->
-  <!--        <version>1.18.4</version>-->
-  <!--        <scope>provided</scope>-->
-  <!--    </dependency>-->
-  <!--    &lt;!&ndash; Spring &ndash;&gt;-->
-  <!--    <dependency>-->
-  <!--        <groupId>org.springframework</groupId>-->
-  <!--        <artifactId>spring-core</artifactId>-->
-  <!--        <version>${spring.version}</version>-->
-  <!--    </dependency>-->
-  <!--    -->
-
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
     <dependency>
