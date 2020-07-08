@@ -43,16 +43,20 @@
         <tr>
             <td>| Id </td>
             <td>| Description </td>
-            <td>| Answer</td>
             <td>| Test</td>
+            <td>| Answer(correct)</td>
+            <td>| Answer(description)</td>
             <td>|</td>
         </tr>
         <c:forEach items="${questions}" var="q">
             <tr>
                 <td>| ${q.id}</td>
                 <td>| ${q.description}</td>
-                <td>| ${q.answer}</td>
                 <td>| ${q.test}</td>
+                <c:forEach items="${q.answer}" var="a">
+                    <td>| ${a.correct}</td>
+                    <td>| ${a.description}</td>
+                </c:forEach>
                 <td>|</td>
             </tr>
         </c:forEach>

@@ -16,12 +16,13 @@ public class Answer {
     @Column(name = "correct")
     private boolean correct;
 
-    @OneToOne(mappedBy = "answer", fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
     private Question question;
 
     @Override
     public String toString() {
-        return "Answer ";
+        return "Answer [description =\'" + description + "\']";
     }
 
     public int getId() {
