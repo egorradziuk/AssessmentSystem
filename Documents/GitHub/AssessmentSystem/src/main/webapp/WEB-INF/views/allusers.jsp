@@ -18,7 +18,7 @@
     <input type="text" value="${sum}" readonly>
     <button type="submit">get</button>
 </form>--%>
-<form action="/users" method="GET">
+<form action="/" method="GET">
     <table>
         <tr>
             <td>| Id </td>
@@ -28,23 +28,35 @@
             <td>| Role</td>
             <td>|</td>
         </tr>
-        <c:forEach items="${users}" var="user">
+        <c:forEach items="${users}" var="u">
             <tr>
-                <td>| ${user.id}</td>
-                <td>| ${user.firstName}</td>
-                <td>| ${user.middleName}</td>
-                <td>| ${user.lastName}</td>
-                <td>| ${user.role}</td>
-                <%--<c:forEach items="${user.accounts}" var="account">
-                    <td>| ${account.account_id}</td>
-                    <td>| ${account.account}</td>
-                    <td>|</td>
-                </c:forEach>--%>
+                <td>| ${u.id}</td>
+                <td>| ${u.firstName}</td>
+                <td>| ${u.middleName}</td>
+                <td>| ${u.lastName}</td>
+                <td>| ${u.role}</td>
                 <td>|</td>
             </tr>
         </c:forEach>
     </table>
-    <button type="submit">List</button>
+    <table>
+        <tr>
+            <td>| Id </td>
+            <td>| Description </td>
+            <td>| Answer</td>
+            <td>| Test</td>
+            <td>|</td>
+        </tr>
+        <c:forEach items="${questions}" var="q">
+            <tr>
+                <td>| ${q.id}</td>
+                <td>| ${q.description}</td>
+                <td>| ${q.answer}</td>
+                <td>| ${q.test}</td>
+                <td>|</td>
+            </tr>
+        </c:forEach>
+    </table>
 </form>
 </body>
 </html>

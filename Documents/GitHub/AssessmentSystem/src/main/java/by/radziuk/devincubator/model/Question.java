@@ -1,33 +1,26 @@
 package by.radziuk.devincubator.model;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 @Entity
 @Table
-public class Topic {
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-
-    @OneToMany(mappedBy = "topic", fetch = FetchType.EAGER)
-    List<Test> test;
-
-    @Column(name = "name")
-    private String name;
 
     @Column(name = "description")
     private String description;
 
-    /*public List<Test> getTest() {
-        return test;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "test_id")
+    private Test test;
 
-    public void setTest(List<Test> test) {
-        this.test = test;
-    }*/
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    private Answer answer;
 
     public int getId() {
         return id;
@@ -35,14 +28,6 @@ public class Topic {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
@@ -53,8 +38,19 @@ public class Topic {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Topic ";
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
+    }
+
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
     }
 }

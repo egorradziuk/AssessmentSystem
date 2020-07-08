@@ -16,8 +16,8 @@ public class Answer {
     @Column(name = "correct")
     private boolean correct;
 
-    @Column(name = "question_id")
-    private int questionId;
+    @OneToOne(mappedBy = "answer", fetch = FetchType.EAGER)
+    private Question question;
 
     @Override
     public String toString() {
@@ -48,11 +48,11 @@ public class Answer {
         this.correct = correct;
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

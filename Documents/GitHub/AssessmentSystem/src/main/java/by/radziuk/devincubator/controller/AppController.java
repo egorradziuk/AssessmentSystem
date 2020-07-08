@@ -1,5 +1,6 @@
 package by.radziuk.devincubator.controller;
 
+import by.radziuk.devincubator.service.QuestionService;
 import by.radziuk.devincubator.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,14 @@ public class AppController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    QuestionService questionService;
+
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
         model.addAttribute("users", userService.findAllUsers());
+        model.addAttribute("questions", questionService.findAllQuestions());
         return "allusers";
     }
 
