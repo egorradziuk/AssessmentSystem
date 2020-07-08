@@ -1,9 +1,7 @@
 package by.radziuk.devincubator.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table
@@ -25,14 +23,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<Role> roles;
-
-    /*@Transient
-    public String fullName() {
-        return first_name+" "+last_name;
-    }*/
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public int getId() {
         return id;
@@ -90,21 +83,14 @@ public class User {
         this.email = email;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    /* public int getRole_id() {
-        return role_id;
-    }
-
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
-    }*/
 
     @Override
     public String toString() {
@@ -113,7 +99,7 @@ public class User {
                 "\', first_name='" + firstName + "\'" +
                 "\', middle_name='" + middleName + '\'' +
                 "\', last_name='" + lastName + '\'' +
-                "\', roles ='" + roles.toString() +
+                "\', role ='" + role +
                 "\']";
     }
 }

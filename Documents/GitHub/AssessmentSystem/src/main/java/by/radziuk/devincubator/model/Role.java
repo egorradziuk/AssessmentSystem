@@ -2,18 +2,31 @@ package by.radziuk.devincubator.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
-public class Role implements Serializable {
+public class Role {
 
     @Id
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", nullable = false)
-    private User user;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
+    private List<User> users = new ArrayList<>();
 
     @Column(name = "role_name")
     private String roleName;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getRoleName() {
         return roleName;
@@ -22,6 +35,15 @@ public class Role implements Serializable {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
 
     @Override
     public String toString() {

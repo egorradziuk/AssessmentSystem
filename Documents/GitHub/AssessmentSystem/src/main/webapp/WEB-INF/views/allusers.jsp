@@ -34,7 +34,7 @@
                 <td>| ${user.firstName}</td>
                 <td>| ${user.middleName}</td>
                 <td>| ${user.lastName}</td>
-                <td>| ${user.roles}</td>
+                <td>| ${user.role}</td>
                 <%--<c:forEach items="${user.accounts}" var="account">
                     <td>| ${account.account_id}</td>
                     <td>| ${account.account}</td>
