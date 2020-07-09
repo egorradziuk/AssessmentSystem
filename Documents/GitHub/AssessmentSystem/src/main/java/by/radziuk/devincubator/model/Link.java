@@ -13,12 +13,15 @@ public class Link {
     @Column(name = "link")
     private String link;
 
-    @Column(name = "literature_id")
-    private int literature_id;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "literature_id")
+    private Literature literature;
 
     @Override
     public String toString() {
-        return "Link ";
+        return "Link [id = " + id +
+                ", link = " + link +
+                "]";
     }
 
     public int getId() {
@@ -37,11 +40,11 @@ public class Link {
         this.link = link;
     }
 
-    public int getLiterature_id() {
-        return literature_id;
+    public Literature getLiterature() {
+        return literature;
     }
 
-    public void setLiterature_id(int literature_id) {
-        this.literature_id = literature_id;
+    public void setLiterature(Literature literature) {
+        this.literature = literature;
     }
 }

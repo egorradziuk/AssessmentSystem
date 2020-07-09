@@ -16,9 +16,19 @@ public class Literature {
     @Column(name = "question_id")
     private int questionId;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id", insertable=false, updatable=false)
+    private Question question;
+
+    @OneToOne(mappedBy = "literature", fetch = FetchType.EAGER)
+    private Link link;
+
     @Override
     public String toString() {
-        return "Literature ";
+        return "Literature [id = " + id +
+                ", description = " + description +
+                ", link = " + link +
+                "]";
     }
 
     public int getId() {
@@ -43,5 +53,21 @@ public class Literature {
 
     public void setQuestionId(int questionId) {
         this.questionId = questionId;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public Link getLink() {
+        return link;
+    }
+
+    public void setLink(Link link) {
+        this.link = link;
     }
 }

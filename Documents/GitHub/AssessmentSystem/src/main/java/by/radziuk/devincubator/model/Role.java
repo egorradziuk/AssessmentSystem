@@ -1,5 +1,8 @@
 package by.radziuk.devincubator.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,8 +17,9 @@ public class Role {
     @Column(name = "id")
     private int id;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
-    private List<User> users = new ArrayList<>();
+    @OneToMany(mappedBy = "role")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<User> users;
 
     @Column(name = "role_name")
     private String roleName;

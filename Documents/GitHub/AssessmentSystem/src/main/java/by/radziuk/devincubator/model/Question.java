@@ -1,5 +1,8 @@
 package by.radziuk.devincubator.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,8 +22,35 @@ public class Question {
     @JoinColumn(name = "test_id")
     private Test test;
 
-    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "question")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Answer> answer;
+
+    @OneToMany(mappedBy = "question")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Statistic> statistics;
+
+    @OneToOne(mappedBy = "question", fetch = FetchType.EAGER)
+    private Literature literature;
+
+    @Override
+    public String toString() {
+        return "Question [id = " + id +
+                ", description = " + description +
+                ", test = " + test +
+                ", answer = " + answer +
+                ", statistic = " + statistics +
+                ", literature = " + literature +
+                "]";
+    }
+
+    public List<Statistic> getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(List<Statistic> statistics) {
+        this.statistics = statistics;
+    }
 
     public int getId() {
         return id;
@@ -52,5 +82,13 @@ public class Question {
 
     public void setAnswer(List<Answer> answer) {
         this.answer = answer;
+    }
+
+    public Literature getLiterature() {
+        return literature;
+    }
+
+    public void setLiterature(Literature literature) {
+        this.literature = literature;
     }
 }

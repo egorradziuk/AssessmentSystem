@@ -1,5 +1,8 @@
 package by.radziuk.devincubator.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,7 +24,8 @@ public class Test {
     @JoinColumn(name = "topic_id")
     private Topic topic;
 
-    @OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Question> question;
 
     public int getId() {

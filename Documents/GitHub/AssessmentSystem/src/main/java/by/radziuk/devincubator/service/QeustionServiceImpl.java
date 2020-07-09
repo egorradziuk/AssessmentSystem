@@ -13,7 +13,7 @@ import java.util.List;
 public class QeustionServiceImpl implements QuestionService {
 
     @Autowired
-    QuestionRepository questionRepository;
+    private QuestionRepository questionRepository;
 
     @Override
     public List<Question> findAllQuestions() {

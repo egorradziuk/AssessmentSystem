@@ -1,5 +1,8 @@
 package by.radziuk.devincubator.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -26,6 +29,29 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Statistic> statistics;
+
+    @Transient
+    private String fullName = firstName + " " + middleName + " " + lastName;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public List<Statistic> getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(List<Statistic> statistics) {
+        this.statistics = statistics;
+    }
 
     public int getId() {
         return id;
