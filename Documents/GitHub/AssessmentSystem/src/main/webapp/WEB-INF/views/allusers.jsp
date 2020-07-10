@@ -101,7 +101,8 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <c:forEach items="${users}" var="u">
                 <tr>
-                    <a class="dropdown-item" href="#">${u.role}</a>
+                    <a class="dropdown-item" href="#">
+                            ${u.firstName} ${u.middleName} ${u.lastName}</a>
                 </tr>
             </c:forEach>
 
