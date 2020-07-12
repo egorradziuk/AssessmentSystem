@@ -81,9 +81,9 @@
                 <td>| ${s.id}</td>
                 <td>| ${s.date}</td>
                 <td>| ${s.correct}</td>
-                <td>| ${s.question}</td>
+                <td>| ${s.questions}</td>
                 <td>| ${s.user}</td>
-                &lt;%&ndash;<c:forEach items="${s.question}" var="q">
+                &lt;%&ndash;<c:forEach items="${s.questions}" var="q">
                     <td>| ${q.id}</td>
                 </c:forEach>
                 <c:forEach items="${s.user}" var="u">

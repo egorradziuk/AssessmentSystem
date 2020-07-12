@@ -13,6 +13,7 @@ public class Link {
     @Column(name = "link")
     private String link;
 
+    //todo manyToOne
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "literature_id")
     private Literature literature;

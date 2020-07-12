@@ -17,7 +17,7 @@ public class Topic {
 
     @OneToMany(mappedBy = "topic")
     @LazyCollection(LazyCollectionOption.FALSE)
-    List<Test> test;
+    private List<Test> tests;
 
     @Column(name = "name")
     private String name;
@@ -26,11 +26,11 @@ public class Topic {
     private String description;
 
     /*public List<Test> getTest() {
-        return test;
+        return tests;
     }
 
-    public void setTest(List<Test> test) {
-        this.test = test;
+    public void setTest(List<Test> tests) {
+        this.tests = tests;
     }*/
 
     public int getId() {

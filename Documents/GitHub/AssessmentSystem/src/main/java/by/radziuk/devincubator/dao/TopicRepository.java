@@ -1,12 +1,10 @@
 package by.radziuk.devincubator.dao;
 
-import by.radziuk.devincubator.model.Test;
 import by.radziuk.devincubator.model.Topic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.NamedNativeQuery;
 import java.util.List;
 
 @Repository

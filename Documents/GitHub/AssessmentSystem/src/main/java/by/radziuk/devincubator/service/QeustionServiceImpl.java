@@ -1,6 +1,7 @@
 package by.radziuk.devincubator.service;
 
 import by.radziuk.devincubator.dao.QuestionRepository;
+import by.radziuk.devincubator.model.Answer;
 import by.radziuk.devincubator.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,4 +21,8 @@ public class QeustionServiceImpl implements QuestionService {
         return questionRepository.findAll();
     }
 
+    @Override
+    public List<Answer> getAnswersByQuestionId(int id) {
+        return questionRepository.getAnswersByQuestionId(id);
+    }
 }

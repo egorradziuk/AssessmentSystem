@@ -6,18 +6,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-    <form action="/nextTestPage1">
-        <input type="text" placeholder="Question"><br><br>
-        <input type="text" placeholder="1.Answer"><br>
-        <input type="text" placeholder="2.Answer"><br>
-        <input type="text" placeholder="3.Answer"><br>
-        <input type="text" placeholder="4.Answer"><br><br>
+    <form action="/nextTestPage" method="get">
+        <div>${questions}</div>
+        <br>
+        <c:forEach items="${answers}" var="answer">
+            <input type="radio" name="choosenAns" value="${answer}">
+            ${answer}<br>
+        </c:forEach>
+        <br>
         <input type="submit" value="next">
     </form>
+    <a href="<c:url value="/logout"/>">Exit</a>
 </body>
 </html>

@@ -16,10 +16,12 @@ public class Literature {
     @Column(name = "question_id")
     private int questionId;
 
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "question_id", insertable=false, updatable=false)
     private Question question;
 
+    //todo oneToMany
     @OneToOne(mappedBy = "literature", fetch = FetchType.EAGER)
     private Link link;
 

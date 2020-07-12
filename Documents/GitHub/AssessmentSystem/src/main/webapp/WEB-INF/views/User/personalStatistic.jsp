@@ -15,7 +15,7 @@
         <tr>
             <th>FIO</th>
             <th>Test name</th>
-            <th>Describe question</th>
+            <th>Describe questions</th>
             <th>FinishedAll</th>
             <th>Percent correct finished questions</th>
         </tr>

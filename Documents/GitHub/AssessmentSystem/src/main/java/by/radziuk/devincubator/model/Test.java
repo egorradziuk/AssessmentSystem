@@ -26,7 +26,7 @@ public class Test {
 
     @OneToMany(mappedBy = "test")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Question> question;
+    private List<Question> questions;
 
     public int getId() {
         return id;
@@ -52,12 +52,12 @@ public class Test {
         this.description = description;
     }
 
-    public List<Question> getQuestion() {
-        return question;
+    public List<Question> getQuestions() {
+        return questions;
     }
 
-    public void setQuestion(List<Question> question) {
-        this.question = question;
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public Topic getTopic() {

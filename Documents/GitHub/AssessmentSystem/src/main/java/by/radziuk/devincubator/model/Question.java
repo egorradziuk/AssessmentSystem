@@ -30,6 +30,7 @@ public class Question {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Statistic> statistics;
 
+    //todo change to oneToMany
     @OneToOne(mappedBy = "question", fetch = FetchType.EAGER)
     private Literature literature;
 

@@ -27,12 +27,14 @@ public class ChooseController {
 
     @GetMapping(value = "/userChoose", produces = APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<String> l(@RequestParam(value = "topic", required = false)
+    public List<String> searchTestName(@RequestParam(value = "topic", required =
+            false)
                                   String topic) {
-        return topicService.findTestsByTopic(topic);
+        return topicService.findTestsByTopic(topic);//testService.getTestsByTopicName(topic);
+        //
     }
 
-    @GetMapping(value = "/goTest")
+    @GetMapping(value = "/getThemes")
     public String goTest(@RequestParam(value = "topic", required = false)
                                      Topic topic, Model model) {
         //System.out.println(testService.findAll());
