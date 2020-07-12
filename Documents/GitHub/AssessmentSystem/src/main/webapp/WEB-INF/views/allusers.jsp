@@ -96,13 +96,15 @@
     <button type="button" class="btn btn-dark">Dark</button>
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            ?????? ??????????? ??????
+            something
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <c:forEach items="${users}" var="u">
                 <tr>
                     <a class="dropdown-item" href="#">
-                            ${u.firstName} ${u.middleName} ${u.lastName}</a>
+                            <%--${u.firstName} ${u.middleName} ${u.lastName}--%>
+                        ${u}
+                    </a>
                 </tr>
             </c:forEach>
 
