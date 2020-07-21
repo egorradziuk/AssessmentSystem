@@ -17,8 +17,9 @@
         <div>${questions}</div>
         <br>
         <c:forEach items="${answers}" var="answer">
-            <input type="radio" name="choosenAns" value="${answer}">
-            ${answer}<br>
+            <input type="radio" name="choosenAns"
+                   value="${answer.id}">
+            ${answer.description}<br>
         </c:forEach>
         <br>
         <input type="submit" value="next">

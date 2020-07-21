@@ -22,7 +22,9 @@ public class Answer {
 
     @Override
     public String toString() {
-        return "Answer [description =\'" + description + "\']";
+        return "Answer [id = " + id +
+                "; correct = " + correct +
+                "; description =\'" + description + "\']";
     }
 
     public int getId() {
@@ -41,7 +43,7 @@ public class Answer {
         this.description = description;
     }
 
-    public boolean isCorrect() {
+    public boolean getCorrect() {
         return correct;
     }
 
