@@ -38,7 +38,6 @@ public class TestPageController {
     public String goTest(@RequestParam String testName, ModelMap modelMap) {
         StatisticService.statList.clear();
         questionList = testService.getQuestionsByTestName(testName);
-        /*staticService.statList = new LinkedHashMap<>();*/
         max = questionList.size();
         if (questionList != null) {
             modelMap.addAttribute("questions", questionList.get(counter)
@@ -56,7 +55,6 @@ public class TestPageController {
         statisticService.statList
                 .put(String.valueOf(questionList.get(counter)
                 .getId()), configureStatistic(id));
-        System.out.println("counter -> "+counter);
         counter++;
         if (counter < max) {
             modelMap.addAttribute("questions", questionList.get(counter)
@@ -64,9 +62,6 @@ public class TestPageController {
             modelMap.addAttribute("answers", questionService.getAnswersByQuestionId
                     (questionList.get(counter).getId()));
 
-            System.out.println(counter);
-            System.out.println(statisticService.statList.get(String.valueOf(questionList.get(counter)
-                    .getId())));
             return "User/testPage";
         } else {
             return resultPageFill(id, modelMap);
