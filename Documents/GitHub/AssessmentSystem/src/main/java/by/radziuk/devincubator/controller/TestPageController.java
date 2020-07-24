@@ -44,35 +44,43 @@ public class TestPageController {
                     .getDescription());
             modelMap.addAttribute("answers", questionService.getAnswersByQuestionId
                     (questionList.get(counter).getId()));
-            counter++;
         }
         return "User/testPage";
     }
 
     @GetMapping(value = "/nextTestPage")
     public String nextTestPage1(
-            @RequestParam(value = "choosenAns") int id,
+            @RequestParam(value = "choosenAns", defaultValue = "-1") int id,
             ModelMap modelMap) {
+        statisticService.statList
+                .put(String.valueOf(questionList.get(counter)
+                .getId()), configureStatistic(id));
+        System.out.println("counter -> "+counter);
+        counter++;
         if (counter < max) {
-            statisticService.statList.put(questionList.get(counter - 1)
-                    .getDescription(), configureStatistic(id));
             modelMap.addAttribute("questions", questionList.get(counter)
                     .getDescription());
             modelMap.addAttribute("answers", questionService.getAnswersByQuestionId
                     (questionList.get(counter).getId()));
-            counter++;
+
+            System.out.println(counter);
+            System.out.println(statisticService.statList.get(String.valueOf(questionList.get(counter)
+                    .getId())));
             return "User/testPage";
         } else {
-            counter = 0;
             return resultPageFill(id, modelMap);
         }
     }
 
     private Statistic configureStatistic(int id) {
         Statistic statistic = new Statistic();
-        Answer answer = answerService.getCorrectByDescription(id);
-        statistic.setCorrect(answer.getCorrect());
-        statistic.setQuestion(questionList.get(counter-1));
+        if (id != -1) {
+            Answer answer = answerService.getCorrectByDescription(id);
+            statistic.setCorrect(answer.getCorrect());
+        } else {
+            statistic.setCorrect(false);
+        }
+        statistic.setQuestion(questionList.get(counter));
         statistic.setUser(userService.findUserById(2));
         statistic.setDate(Calendar.getInstance().getTime());
         return statistic;
@@ -80,14 +88,29 @@ public class TestPageController {
 
     @GetMapping("/resultPage")
     public String resultPageFill(int chooseAnswer, ModelMap modelMap) {
+        counter = 0;
         statisticService.saveMapOfStat(StatisticService.statList, Calendar.getInstance().getTime());
+        StatisticService.statList.clear();
         return "User/resultPage";
     }
 
     @GetMapping(value = "/logout")
     public String logout() {
+        addSomePart();
         statisticService.saveMapOfStat(StatisticService.statList, Calendar.getInstance().getTime());
+        counter = 0;
+        StatisticService.statList.clear();
         return "User/user";
+    }
+
+    void addSomePart() {
+        int id = -1;
+        while (StatisticService.statList.size() != max) {
+            statisticService.statList
+                    .put(String.valueOf(questionList.get(counter)
+                            .getId()), configureStatistic(id));
+            counter++;
+        }
     }
 
 }
