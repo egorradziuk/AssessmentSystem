@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Yahor
-  Date: 10.07.2020
-  Time: 10:59
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,16 +7,21 @@
 <body>
     <table>
         <tr>
-            <th>Question name</th>
-            <th>Correct</th>
-            <th>recommend literature</th>
-            <th>recommend link on literature</th>
+            <th>|Question name</th>
+            <th>|Correct</th>
+            <th>|Recommend literature</th>
+            <th>|Recommend link on literature</th>
+            <td>|</td>
         </tr>
-        <tr><td>(-)</td><td>(-)</td><td>(-)</td><td>(-)</td></tr>
-        <tr><td>(-)</td><td>(-)</td><td>(-)</td><td>(-)</td></tr>
-        <tr><td>(-)</td><td>(-)</td><td>(-)</td><td>(-)</td></tr>
-        <tr><td>(-)</td><td>(-)</td><td>(-)</td><td>(-)</td></tr>
-        <tr><td>(-)</td><td>(-)</td><td>(-)</td><td>(-)</td></tr>
+        <c:forEach items="${statistic}" var="stat">
+            <tr>
+                <td>|${stat.getQuestion().getDescription()}</td>
+                <td>|${stat.isCorrect()}</td>
+                <td>|${stat.getQuestion().getLiterature().getDescription()}</td>
+                <td>|${stat.getQuestion().getLiterature().getLink().getLink()}</td>
+                <td>|</td>
+            </tr>
+        </c:forEach>
     </table>
 
     <form action="/goHome">

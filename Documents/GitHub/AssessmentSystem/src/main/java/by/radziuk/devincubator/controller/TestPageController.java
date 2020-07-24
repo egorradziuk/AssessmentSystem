@@ -36,6 +36,7 @@ public class TestPageController {
 
     @GetMapping(value = "/goTest")
     public String goTest(@RequestParam String testName, ModelMap modelMap) {
+        StatisticService.statList.clear();
         questionList = testService.getQuestionsByTestName(testName);
         /*staticService.statList = new LinkedHashMap<>();*/
         max = questionList.size();
@@ -90,7 +91,7 @@ public class TestPageController {
     public String resultPageFill(int chooseAnswer, ModelMap modelMap) {
         counter = 0;
         statisticService.saveMapOfStat(StatisticService.statList, Calendar.getInstance().getTime());
-        StatisticService.statList.clear();
+        modelMap.addAttribute("statistic", statisticService.statList.values());
         return "User/resultPage";
     }
 
@@ -99,7 +100,6 @@ public class TestPageController {
         addSomePart();
         statisticService.saveMapOfStat(StatisticService.statList, Calendar.getInstance().getTime());
         counter = 0;
-        StatisticService.statList.clear();
         return "User/user";
     }
 
