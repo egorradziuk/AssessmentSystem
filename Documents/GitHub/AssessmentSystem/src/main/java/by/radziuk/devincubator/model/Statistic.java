@@ -1,6 +1,7 @@
 package by.radziuk.devincubator.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -11,8 +12,9 @@ public class Statistic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    //@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date")
-    private Date date;
+    private Timestamp date;
 
     @Column(name = "correct")
     private boolean correct;
@@ -40,11 +42,11 @@ public class Statistic {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

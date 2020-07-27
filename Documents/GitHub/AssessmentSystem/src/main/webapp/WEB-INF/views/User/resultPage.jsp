@@ -7,19 +7,17 @@
 <body>
     <table>
         <tr>
-            <th>|Question name</th>
-            <th>|Correct</th>
-            <th>|Recommend literature</th>
-            <th>|Recommend link on literature</th>
-            <td>|</td>
+            <th> Question name</th>
+            <th> Correct</th>
+            <th> Recommend literature</th>
+            <th> Recommend link on literature</th>
         </tr>
         <c:forEach items="${statistic}" var="stat">
             <tr>
-                <td>|${stat.getQuestion().getDescription()}</td>
-                <td>|${stat.isCorrect()}</td>
-                <td>|${stat.getQuestion().getLiterature().getDescription()}</td>
-                <td>|${stat.getQuestion().getLiterature().getLink().getLink()}</td>
-                <td>|</td>
+                <td> ${stat.getQuestion().getDescription()}</td>
+                <td> ${stat.isCorrect()}</td>
+                <td> ${stat.getQuestion().getLiterature().getDescription()}</td>
+                <td> ${stat.getQuestion().getLiterature().getLink().getLink()}</td>
             </tr>
         </c:forEach>
     </table>

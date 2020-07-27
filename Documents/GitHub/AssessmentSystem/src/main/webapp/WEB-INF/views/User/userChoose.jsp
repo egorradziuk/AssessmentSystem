@@ -19,6 +19,7 @@
     <form action="/goTest" >
         <select id="themes" name="themes">
             <c:forEach items="${topics}" var="topic">
+                <option value="" selected disabled hidden>Choose topic</option>
                 <option>${topic.name}</option>
             </c:forEach>
         </select>
