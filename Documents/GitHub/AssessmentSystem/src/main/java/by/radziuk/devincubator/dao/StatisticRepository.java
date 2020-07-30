@@ -24,7 +24,6 @@ public interface StatisticRepository extends JpaRepository<Statistic, Long> {
                             @Param("user") User user,
                             @Param("question") Question question,
                             @Param("correct") boolean correct);
-//    List<Statistic> findAllByDate(Date date);
     List<Statistic> findAllByDate(Timestamp date);
     @Query("from Statistic where date = ?1")
     List<Statistic> getAllByDate(Timestamp date);

@@ -12,7 +12,6 @@ public class Statistic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //@Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date")
     private Timestamp date;
 
